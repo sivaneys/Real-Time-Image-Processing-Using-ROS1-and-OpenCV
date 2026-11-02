@@ -1,0 +1,17 @@
+<launch>
+
+  <!-- Which TurtleBot3 model to spawn (waffle_pi has the camera) -->
+  <arg name="model" default="waffle_pi" />
+  <env name="TURTLEBOT3_MODEL" value="$(arg model)" />
+
+  <!-- Bring up the TurtleBot3 world in Gazebo -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch" />
+
+  <!-- Start the face/object detection node -->
+  <node
+    name="face_detector_node"
+    pkg="image_processing_project"
+    type="face_detector_node.py"
+    output="screen" />
+
+</launch>
